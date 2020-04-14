@@ -9,7 +9,15 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 //const qs = require('qs');
 const signature = require('./verifySignature');
+
+
 let apiUrl = 'https://slack.com/api';
+
+
+const storage = require('node-persist');
+storage.initSync();
+
+
 const app = express();
 
 const rawBodyBuffer = (req, res, buf, encoding) => {
@@ -24,6 +32,7 @@ app.use(bodyParser.json({ verify: rawBodyBuffer }));
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
+
 
 
 
