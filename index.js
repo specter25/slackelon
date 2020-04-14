@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 //const qs = require('qs');
 const signature = require('./verifySignature');
-
+let apiUrl = 'https://slack.com/api';
 const app = express();
 
 const rawBodyBuffer = (req, res, buf, encoding) => {
