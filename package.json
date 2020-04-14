@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "node-persist": "^2.1.0",
     "qs": "^6.9.3",
-    "request": "^2.88.2",
+    "request": "^2.80.0",
     "slackbots": "^1.2.0",
     "tsscmp": "^1.0.6"
   }
