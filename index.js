@@ -118,7 +118,7 @@ app.get('/auth', function(req, res){
     client_secret: process.env.SLACK_CLIENT_SECRET,
     code: req.query.code
   }};
-  request.post(apiUrl + '/oauth.access', data, function (error, response, body) {
+  request.post('https://slack.com/api/oauth.v2.access', data, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       
       // Get an auth token (and store the team_id / token)    
