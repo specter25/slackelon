@@ -17,7 +17,8 @@ const timingSafeCompare = require('tsscmp');
 const isVerified = (req) => { 
   const signature = req.headers['x-slack-signature'];
   const timestamp = req.headers['x-slack-request-timestamp'];
-  const hmac = crypto.createHmac('sha256', process.env.SLACK_SIGNING_SECRET);
+  const hmac = crypto.createHmac('sha256', '31ca7d7285d9b3861b48f29ac939f64d'
+  );
   const [version, hash] = signature.split('=');
 
   // Check if the timestamp is too old
