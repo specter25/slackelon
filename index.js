@@ -136,8 +136,8 @@ app.get('/auth/redirect', (req, res) =>{
   var options = {
       uri: 'https://slack.com/api/oauth.access?code='
           +req.query.code+
-          '&client_id='+process.env.CLIENT_ID+
-          '&client_secret='+process.env.CLIENT_SECRET+
+          '&client_id='+process.env.SLACK_CLIENT_ID+
+          '&client_secret='+process.env.SLACK_CLIENT_SECRET+
           '&redirect_uri='+process.env.REDIRECT_URI,
       method: 'GET'
   }
