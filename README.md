@@ -4,7 +4,9 @@ slackbot restapi to fetch recent 20 twitter posts of elon musks
 RUN COMMANDS
 
 
-npm i 
+npm i
+
+
 npm start
 
 GOTOLINK AND ADD TO SLACK WORKSPACE
