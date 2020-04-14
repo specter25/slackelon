@@ -122,7 +122,7 @@ app.get('/auth', function(req, res){
       // Get an auth token
       let oauthToken = JSON.parse(body).access_token;
       // OAuth done- redirect the user to wherever
-      res.redirect(__dirname + "/public/success.html");
+      res.send('success');
     }
   })
 });
