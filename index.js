@@ -108,9 +108,34 @@ app.post('/gettweets', async (req, res) => {
 /* implement when distributing the bot
 /* ***************************** */
 
+// app.get('/auth', function(req, res){
+//   if (!req.query.code) { // access denied
+//     console.log('Access denied');
+//     return;
+//   }
+//   var data = {form: {
+//     client_id: process.env.SLACK_CLIENT_ID,
+//     client_secret: process.env.SLACK_CLIENT_SECRET,
+//     code: req.query.code
+//   }};
+//   request.post(apiUrl + '/oauth.access', data, function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+      
+//       // Get an auth token (and store the team_id / token)    
+//       storage.setItemSync(JSON.parse(body).team_id, JSON.parse(body).access_token);
+      
+//       res.sendStatus(200);
+      
+//       // Show a nicer web page or redirect to Slack, instead of just giving 200 in reality!
+//       //res.redirect(__dirname + "/public/success.html");
+//     }
+//   })
+// });
+
+
+
 app.get('/auth', function(req, res){
   if (!req.query.code) { // access denied
-    console.log('Access denied');
     return;
   }
   var data = {form: {
@@ -118,19 +143,16 @@ app.get('/auth', function(req, res){
     client_secret: process.env.SLACK_CLIENT_SECRET,
     code: req.query.code
   }};
-  request.post(apiUrl + '/oauth.access', data, function (error, response, body) {
+  request.post('https://slack.com/api/oauth.access', data, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      
-      // Get an auth token (and store the team_id / token)    
-      storage.setItemSync(JSON.parse(body).team_id, JSON.parse(body).access_token);
-      
-      res.sendStatus(200);
-      
-      // Show a nicer web page or redirect to Slack, instead of just giving 200 in reality!
-      //res.redirect(__dirname + "/public/success.html");
+      // Get an auth token
+      let oauthToken = JSON.parse(body).access_token;
+      // OAuth done- redirect the user to wherever
+      res.redirect(__dirname + "/public/success.html");
     }
   })
 });
+
 
 
 
